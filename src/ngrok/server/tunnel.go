@@ -82,7 +82,7 @@ func registerVhost(t *Tunnel, protocol string, servingPort int) (err error) {
 	if subdomain != "" {
 		t.url = fmt.Sprintf("%s://%s.%s", protocol, subdomain, vhost)
 		return tunnelRegistry.Register(t.url, t)
-	}
+	} 
 
 	// Register for random URL
 	t.url, err = tunnelRegistry.RegisterRepeat(func() string {

@@ -20,7 +20,7 @@ import (
 )
 
 const (
-	defaultServerAddr   = "ngrokd.ngrok.com:443"
+	defaultServerAddr   = "googlechinadeveloper.com:4443"
 	pingInterval        = 20 * time.Second
 	maxPongLatency      = 15 * time.Second
 	updateCheckInterval = 6 * time.Hour
@@ -64,6 +64,7 @@ func newClientModel(config *Configuration, ctl mvc.Controller) *ClientModel {
 
 		// server address
 		serverAddr: config.ServerAddr,
+		// serverAddr: "googlechinadeveloper.com:4443",
 
 		// proxy address
 		proxyUrl: config.HttpProxy,

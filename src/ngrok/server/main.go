@@ -10,6 +10,7 @@ import (
 	"os"
 	"runtime/debug"
 	"time"
+	"fmt"
 )
 
 const (
@@ -86,8 +87,12 @@ func tunnelListener(addr string, tlsConfig *tls.Config) {
 
 			switch m := rawMsg.(type) {
 			case *msg.Auth:
-				NewControl(tunnelConn, m)
-
+				if("auth.googlechinadeveloper.com" != m.User) {
+					fmt.Println("Auth Failed: %s", m.User)
+					tunnelConn.Close()
+				} else {
+					NewControl(tunnelConn, m)
+				}
 			case *msg.RegProxy:
 				NewProxy(tunnelConn, m)
 

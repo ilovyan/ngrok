@@ -73,7 +73,7 @@ func LoadConfiguration(opts *Options) (config *Configuration, err error) {
 	}
 
 	if config.InspectAddr == "" {
-		config.InspectAddr = "127.0.0.1:4040"
+		config.InspectAddr = "0.0.0.0:4040"
 	}
 
 	if config.HttpProxy == "" {
@@ -212,6 +212,7 @@ func defaultPath() string {
 	} else {
 		homeDir = user.HomeDir
 	}
+	fmt.Sprintf(homeDir)
 
 	return path.Join(homeDir, ".ngrok")
 }
